@@ -42,8 +42,7 @@
       padding: 24px 16px 64px;
     }
 
-    /* HEADER ====================================================== */
-
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -53,7 +52,7 @@
     }
 
     .logo-img {
-      height: 90px;  /* LOGO MÁS GRANDE */
+      height: 90px;
       width: auto;
       object-fit: contain;
       display: block;
@@ -68,8 +67,7 @@
       text-align: right;
     }
 
-    /* HERO ====================================================== */
-
+    /* HERO */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
@@ -78,8 +76,7 @@
       margin-bottom: 32px;
     }
 
-    /* VIDEO CARD */
-
+    /* VIDEO */
     .hero-video-card {
       background: rgba(8, 8, 15, 0.9);
       border-radius: var(--radius-xl);
@@ -119,7 +116,6 @@
     }
 
     /* HERO TEXT */
-
     .eyebrow {
       font-size: 12px;
       text-transform: uppercase;
@@ -163,8 +159,6 @@
       background: var(--accent-gold);
     }
 
-    /* PRICE CARD */
-
     .price-card {
       background: rgba(10, 10, 18, 0.9);
       border-radius: var(--radius-xl);
@@ -179,8 +173,7 @@
       font-weight: 700;
     }
 
-    /* BUTTONS ====================================================== */
-
+    /* BUTTONS */
     .btn {
       border-radius: 999px;
       padding: 12px 14px;
@@ -210,15 +203,14 @@
       margin-bottom: 10px;
     }
 
-    /* RESPONSIVE — MOBILE FIRST VIDEO */
-
+    /* RESPONSIVE */
     @media (max-width: 880px) {
       .hero {
         grid-template-columns: 1fr;
       }
 
       .hero-video-card {
-        order: -1; /* VIDEO ARRIBA EN CELULAR */
+        order: -1;
       }
 
       .logo-img {
@@ -231,6 +223,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
 
@@ -253,7 +246,7 @@
     <main>
       <section class="hero">
 
-        <!-- HERO VIDEO (sube primero en mobile) -->
+        <!-- VIDEO -->
         <div class="hero-video-card">
           <div class="hero-video-tag">VSL + clase explicativa</div>
 
@@ -261,17 +254,16 @@
             <iframe
               src="https://www.youtube.com/embed/SJCvhQZMuT4"
               title="Presentación del Método Persaltum"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
           </div>
 
           <div class="video-caption">
-            En este video, <span class="highlight">Pablo Galli</span> te muestra el sistema que vas a aplicar para dejar de improvisar y empezar a vender con método.
+            En este video, <span class="highlight">Pablo Galli</span> te muestra el sistema completo del Método Persaltum.
           </div>
         </div>
 
-        <!-- HERO TEXT -->
+        <!-- TEXTO HERO -->
         <div>
           <div class="eyebrow">Presentación del Método Persaltum</div>
 
@@ -298,42 +290,29 @@
               <div class="price-tagline">Lanzamiento promocional</div>
             </div>
             <div class="price-extra">
-              Acceso inmediato al PDF del Método Persaltum + clase explicativa donde te muestro el sistema completo para dejar de improvisar y empezar a vender con método.
+              Acceso inmediato al PDF + clase explicativa donde te muestro el sistema completo para dejar de improvisar y empezar a vender con método.
             </div>
           </div>
 
-          <!-- LISTA HERO -->
           <ul class="hero-list">
             <li><span class="bullet">✓</span>Guía estratégica en PDF del Método Persaltum.</li>
-            <li><span class="bullet">✓</span>Video explicativo paso a paso del sistema completo.</li>
+            <li><span class="bullet">✓</span>Video explicativo paso a paso del sistema.</li>
             <li><span class="bullet">✓</span>Acceso inmediato después del pago.</li>
           </ul>
 
           <!-- BOTONES -->
           <div class="hero-ctas">
-            <div>
-              <div class="cta-row-label">Elegí tu forma de pago</div>
+            <div class="cta-row-label">Elegí tu forma de pago</div>
 
-              <div class="payment-buttons">
-
-                <a class="btn" href="TU_LINK_STRIPE_AQUI" target="_blank">
-                  Comprar con Stripe
-                </a>
-
-                <a class="btn" href="TU_LINK_HOTMART_AQUI" target="_blank">
-                  Comprar en Hotmart
-                </a>
-
-                <a class="btn" href="TU_LINK_MERCADOPAGO_AQUI" target="_blank">
-                  Comprar con Mercado Pago
-                </a>
-
-              </div>
+            <div class="payment-buttons">
+              <a class="btn" href="TU_LINK_STRIPE_AQUI" target="_blank">Comprar con Stripe</a>
+              <a class="btn" href="TU_LINK_HOTMART_AQUI" target="_blank">Comprar en Hotmart</a>
+              <a class="btn" href="TU_LINK_MERCADOPAGO_AQUI" target="_blank">Comprar con Mercado Pago</a>
             </div>
           </div>
 
           <div class="hero-note">
-            <strong>Importante:</strong> si pagás por Hotmart, antes de finalizar la compra vas a ver productos adicionales (opcionales) para acelerar tus resultados.
+            <strong>Importante:</strong> si pagás por Hotmart, antes de finalizar la compra vas a ver productos adicionales opcionales.
           </div>
         </div>
 
@@ -344,7 +323,7 @@
         <div class="section-card">
           <h2 class="section-title">¿Qué incluye el Método Persaltum?</h2>
           <p class="section-subtitle">
-            Es el resumen estratégico de años de experiencia, pruebas reales y miles de dólares invertidos en formación, simplificado en un sistema aplicable por cualquier persona.
+            Es el resumen estratégico de años de experiencia, pruebas reales y miles de dólares en formación, condensado en un sistema simple.
           </p>
 
           <div class="grid-2">
@@ -354,7 +333,7 @@
                   <div class="check">✓</div>
                   <div>
                     <strong>PDF estratégico del Método Persaltum</strong><br />
-                    El mapa completo del sistema: captación, contenido, automatización y venta.
+                    El mapa completo del sistema.
                   </div>
                 </li>
 
@@ -362,7 +341,7 @@
                   <div class="check">✓</div>
                   <div>
                     <strong>Video explicativo paso a paso</strong><br />
-                    Entendés claramente cómo funciona el sistema y cómo aplicarlo.
+                    Entendés exactamente cómo aplicar el método.
                   </div>
                 </li>
 
@@ -370,7 +349,7 @@
                   <div class="check">✓</div>
                   <div>
                     <strong>Ruta simple para automatizar</strong><br />
-                    Qué herramientas usar, cómo conectarlas y qué evitar.
+                    Qué herramientas usar y cómo conectarlas.
                   </div>
                 </li>
 
@@ -378,7 +357,7 @@
                   <div class="check">✓</div>
                   <div>
                     <strong>Enfoque sin tecnicismos</strong><br />
-                    Todo explicado en lenguaje claro, aplicable desde cero.
+                    Aplicable desde cero.
                   </div>
                 </li>
               </ul>
@@ -387,18 +366,17 @@
             <div>
               <div class="quote-block">
                 <strong>Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</strong><br />
-                Este material es tu punto de partida para construir una empresa digital real, sin improvisar.
+                Este material es el punto de partida para tu empresa digital.
               </div>
 
               <div class="pill-list">
                 <div class="pill">Ideal si recién empezás</div>
                 <div class="pill">Sirve si ya vendés</div>
                 <div class="pill">Aplicable a cursos y mentorías</div>
-                <div class="pill">Pensado para LATAM y el mundo</div>
+                <div class="pill">Pensado para LATAM</div>
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -412,7 +390,7 @@
             <li><div class="check">✓</div><div>Ver cómo funciona un sistema que capta y vende por vos.</div></li>
             <li><div class="check">✓</div><div>Dejar de improvisar contenido.</div></li>
             <li><div class="check">✓</div><div>Saber qué herramientas usar sin confundirte.</div></li>
-            <li><div class="check">✓</div><div>Tener un plan inicial para escalar después.</div></li>
+            <li><div class="check">✓</div><div>Tener un plan inicial para escalar.</div></li>
           </ul>
         </div>
       </section>
@@ -442,18 +420,17 @@
 
               <div class="faq-item">
                 <div class="faq-q">¿Puedo seguir avanzando después?</div>
-                <div class="faq-a">Sí, luego podés acceder a programas avanzados Persaltum.</div>
+                <div class="faq-a">Sí, luego accedés a programas avanzados Persaltum.</div>
               </div>
             </div>
           </div>
 
           <div class="section-card wa-card">
             <h2 class="section-title">Unite al grupo de novedades</h2>
-            <p class="section-subtitle">Recibí avisos importantes de lanzamientos Persaltum.</p>
+            <p class="section-subtitle">Recibí avisos importantes y lanzamientos Persaltum.</p>
 
             <a class="btn" href="https://chat.whatsapp.com/Gg1xzEhj28vEJVSth0VLzG" target="_blank">
-              <span>💬</span>
-              Unirme al grupo de WhatsApp
+              💬 Unirme al grupo de WhatsApp
             </a>
           </div>
 
@@ -470,22 +447,11 @@
             <div class="cta-row-label">Empezá ahora</div>
 
             <div class="payment-buttons">
-
-              <a class="btn" href="TU_LINK_STRIPE_AQUI">
-                Comprar con Stripe
-              </a>
-
-              <a class="btn" href="TU_LINK_HOTMART_AQUI">
-                Comprar en Hotmart
-              </a>
-
-              <a class="btn" href="TU_LINK_MERCADOPAGO_AQUI">
-                Comprar con Mercado Pago
-              </a>
-
+              <a class="btn" href="TU_LINK_STRIPE_AQUI" target="_blank">Comprar con Stripe</a>
+              <a class="btn" href="TU_LINK_HOTMART_AQUI" target="_blank">Comprar en Hotmart</a>
+              <a class="btn" href="TU_LINK_MERCADOPAGO_AQUI" target="_blank">Comprar con Mercado Pago</a>
             </div>
           </div>
-
         </div>
       </section>
 
