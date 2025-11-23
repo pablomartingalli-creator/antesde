@@ -54,18 +54,20 @@
     /* HEADER */
     header {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       margin-bottom: 24px;
-      gap: 12px;
+      gap: 8px;
+      text-align: center;
     }
 
     .logo-img {
-      height: 90px; /* logo grande */
+      height: 140px; /* LOGO MÁS GRANDE, PROTAGONISTA */
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 0 6px rgba(245, 196, 91, 0.25));
+      filter: drop-shadow(0 0 10px rgba(245, 196, 91, 0.35));
     }
 
     .header-tagline {
@@ -73,7 +75,6 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      text-align: right;
     }
 
     /* HERO */
@@ -461,15 +462,11 @@
       }
 
       .logo-img {
-        height: 80px;
+        height: 130px; /* sigue grande en móvil */
       }
 
       .payment-buttons {
         grid-template-columns: 1fr;
-      }
-
-      .header-tagline {
-        text-align: left;
       }
     }
 
@@ -551,7 +548,7 @@
 
             <div class="payment-buttons">
               <!-- Reemplazá estos links cuando tengas Stripe y MP listos -->
-              <a class="btn" href="TU_LINK_STRIPE_AQUI" target="_blank" rel="noopener noreferrer">
+              <a class="btn" href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n" target="_blank" rel="noopener noreferrer">
                 Comprar con Stripe
               </a>
 
@@ -559,7 +556,7 @@
                 Comprar en Hotmart
               </a>
 
-              <a class="btn" href="TU_LINK_MERCADOPAGO_AQUI" target="_blank" rel="noopener noreferrer">
+              <a class="btn" href="https://mpago.la/1dvcVva" target="_blank" rel="noopener noreferrer">
                 Comprar con Mercado Pago
               </a>
             </div>
@@ -570,7 +567,7 @@
           </div>
         </div>
 
-        <!-- VIDEO HERO (sube primero en mobile por CSS order:-1) -->
+        <!-- VIDEO HERO -->
         <div class="hero-video-card">
           <div class="hero-video-tag">VSL + clase explicativa</div>
 
@@ -688,7 +685,7 @@
               <div class="faq-item">
                 <div class="faq-q">¿Qué pasa con los productos adicionales (upsells)?</div>
                 <div class="faq-a">
-                  Dentro del checkout de Hotmart vas a ver opciones extra para acelerar tus resultados. Son completamente opcionales: podés aceptar o no, y seguís teniendo el Método Persaltum igual.
+                  Dentro del checkout de Hotmart vas a ver opciones extra para acelerar tus resultados. Son completamente opcionales: podés aceptarlos o no, y seguís teniendo el Método Persaltum igual.
                 </div>
               </div>
               <div class="faq-item">
@@ -731,7 +728,7 @@
             <div class="cta-row-label">Empezá ahora con el Método Persaltum</div>
 
             <div class="payment-buttons">
-              <a class="btn" href="TU_LINK_STRIPE_AQUI" target="_blank" rel="noopener noreferrer">
+              <a class="btn" href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n" target="_blank" rel="noopener noreferrer">
                 Comprar con Stripe
               </a>
 
@@ -739,7 +736,7 @@
                 Comprar en Hotmart
               </a>
 
-              <a class="btn" href="TU_LINK_MERCADOPAGO_AQUI" target="_blank" rel="noopener noreferrer">
+              <a class="btn" href="https://mpago.la/1dvcVva" target="_blank" rel="noopener noreferrer">
                 Comprar con Mercado Pago
               </a>
             </div>
