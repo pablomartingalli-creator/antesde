@@ -176,7 +176,8 @@
     .price-main {
       display: flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .price-main span.currency {
@@ -184,12 +185,28 @@
       opacity: 0.8;
     }
 
-    .price-main span.amount {
-      font-size: 26px;
-      font-weight: 700;
+    /* NUEVO: precio anterior tachado */
+    .price-old {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      opacity: 0.85;
     }
 
-    .price-main span.once {
+    /* NUEVO: precio promo */
+    .price-new {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-new span.amount {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .price-new span.once {
       font-size: 13px;
       color: var(--text-muted);
     }
@@ -199,11 +216,66 @@
       color: var(--accent-gold);
       text-transform: uppercase;
       letter-spacing: 0.12em;
+      text-align: right;
     }
 
     .price-extra {
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* NUEVO: mini info de promo */
+    .price-promo-line {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .price-promo-line .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 196, 91, 0.25);
+      background: rgba(245, 196, 91, 0.06);
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    /* NUEVO: 3 tarjetitas */
+    .mini-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(8, 8, 15, 0.9);
+      padding: 10px 10px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .mini-card .t {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      margin-bottom: 4px;
+    }
+
+    .mini-card .d {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.35;
     }
 
     .hero-list {
@@ -247,9 +319,10 @@
       margin-bottom: 4px;
     }
 
+    /* AJUSTE: ahora son 2 botones */
     .payment-buttons {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
     }
 
@@ -294,11 +367,6 @@
 
     .btn-hotmart {
       background: var(--hotmart);
-      color: #ffffff;
-    }
-
-    .btn-mercadopago {
-      background: var(--mercadopago);
       color: #ffffff;
     }
 
@@ -515,6 +583,10 @@
       .payment-buttons {
         grid-template-columns: 1fr;
       }
+
+      .mini-cards {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -564,15 +636,44 @@
             <div class="price-row">
               <div class="price-main">
                 <span class="currency">USD</span>
-                <span class="amount">37</span>
-                <span class="once">pago único</span>
+                <span class="price-old">37</span>
+
+                <span class="currency">USD</span>
+                <span class="price-new">
+                  <span class="amount">17</span>
+                  <span class="once">pago único</span>
+                </span>
               </div>
+
               <div class="price-tagline">
-                Lanzamiento promocional limitado
+                Promo por 30 días
               </div>
             </div>
+
+            <div class="price-promo-line">
+              <span class="badge">⏳ Promo activa 30 días</span>
+              <span class="badge">✅ Garantía 7 días</span>
+              <span class="badge">📩 Acceso inmediato</span>
+            </div>
+
             <div class="price-extra">
               Acceso inmediato al PDF del Método Persaltum + clase completa en la que te doy la información importante para comenzar y escalar tu negocio digital en redes sociales. Para empezar a vender con método.
+            </div>
+
+            <!-- 3 TARJETITAS -->
+            <div class="mini-cards">
+              <div class="mini-card">
+                <div class="t">1) PDF</div>
+                <div class="d">Guía clara y accionable para ordenar tu idea y empezar a vender con método.</div>
+              </div>
+              <div class="mini-card">
+                <div class="t">2) Clase</div>
+                <div class="d">Video introductorio donde te muestro el sistema paso a paso para aplicarlo.</div>
+              </div>
+              <div class="mini-card">
+                <div class="t">3) Garantía</div>
+                <div class="d">Tenés 7 días para probarlo: si no te sirve, pedís reembolso.</div>
+              </div>
             </div>
           </div>
 
@@ -595,7 +696,6 @@
             <div>
               <div class="cta-row-label">Elegí tu forma de pago</div>
               <div class="payment-buttons">
-                <!-- ⚠ REEMPLAZÁ ESTOS HREF CON TUS LINKS REALES DEL PRODUCTO PRINCIPAL -->
                 <a
                   class="btn btn-stripe"
                   href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n"
@@ -611,10 +711,7 @@
                   rel="noopener noreferrer"
                 >
                   <span>Ingresar</span>
-                  <span class="sub"></span>
                 </a>
-
-                <!-- ✅ MERCADO PAGO ELIMINADO (BOTÓN REMOVIDO) -->
               </div>
             </div>
           </div>
@@ -622,7 +719,8 @@
           <div class="hero-note">
             <strong>Importante:</strong> si pagás por Hotmart, antes de finalizar la compra vas a ver
             opciones de productos adicionales para acelerar tus resultados (order bump y upsells). Podés
-            aceptarlos o no, el Método Persaltum sigue siendo tuyo igual. Si queres pagar con Mercado Pago (Argentina) comunicate al Whatssap +549113932-2197.
+            aceptarlos o no, el Método Persaltum sigue siendo tuyo igual.
+            Si querés pagar con Mercado Pago (Argentina) comunicate al WhatsApp +549113932-2197.
           </div>
         </div>
 
@@ -630,7 +728,6 @@
         <div class="hero-video-card">
           <div class="hero-video-tag">VSL + clase explicativa</div>
           <div class="video-wrapper">
-            <!-- ⚠ Reemplazá el src por el link de tu video en YouTube si cambiás -->
             <iframe
               src="https://www.youtube.com/embed/SJCvhQZMuT4"
               title="Presentación del Método Persaltum"
@@ -639,7 +736,7 @@
             ></iframe>
           </div>
           <div class="video-caption">
-            En este video, <span class="highlight">Pablo Galli</span> aporta información que tienes que saber para comenzar tu negocio digital y escalarlo en redes sociales. El sentido de utilizar la Inteligencia artificial a tu favor.
+            En este video, <span class="highlight">Pablo Galli</span> aporta información que tenés que saber para comenzar tu negocio digital y escalarlo en redes sociales. El sentido de utilizar la Inteligencia Artificial a tu favor.
           </div>
         </div>
       </section>
@@ -668,7 +765,7 @@
                   <div class="check">✓</div>
                   <div>
                     <strong>Video explicativo paso a paso</strong><br />
-                    Una clase completa en donde te doy las herramientas e información que necesitas saber para comenzar y escalar tu negocio en redes, con estrategia de contenido y publicación con proposito de venta.
+                    Una clase completa en donde te doy las herramientas e información que necesitás saber para comenzar y escalar tu negocio en redes, con estrategia de contenido y publicación con propósito de venta.
                   </div>
                 </li>
                 <li>
@@ -782,7 +879,7 @@
             <div>
               <h2 class="section-title">Entrá al grupo silencioso de novedades</h2>
               <p class="section-subtitle">
-                Te sumo a un grupo de WhatsApp donde solo vas a ver noticias, lanzamientos y avisos importantes del
+                Te sumo a un grupo de WhatsApp donde solo vas a ver noticias, lanzamientos y avisos importantes de
                 la Universidad Digital del Infoproducto. Sin spam, sin mensajes de otros usuarios.
               </p>
             </div>
@@ -817,7 +914,6 @@
           <div class="hero-ctas">
             <div class="cta-row-label">Empezá ahora con el Método Persaltum</div>
             <div class="payment-buttons">
-              <!-- MISMOS LINKS QUE ARRIBA: STRIPE / HOTMART -->
               <a
                 class="btn btn-stripe"
                 href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n"
@@ -835,8 +931,6 @@
                 <span>Ingresar al Hotmart</span>
                 <span class="sub">con upsells</span>
               </a>
-
-              <!-- ✅ MERCADO PAGO ELIMINADO (BOTÓN REMOVIDO) -->
             </div>
           </div>
         </div>
