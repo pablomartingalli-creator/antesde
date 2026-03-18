@@ -1,947 +1,756 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Método Persaltum – Dejá de adivinar cómo vender online</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Presentación del Método Persaltum, donde te explico paso a paso cómo crear y automatizar tu negocio digital con un sistema simple y probado."
-  />
-  <style>
-    :root {
-      --bg-main: #050509;
-      --bg-card: #111117;
-      --accent-gold: #f5c45b;
-      --accent-gold-soft: rgba(245, 196, 91, 0.2);
-      --text-main: #f8f8ff;
-      --text-muted: #b3b3c2;
-
-      --stripe: #635bff;
-      --hotmart: #ff5c00;
-      --mercadopago: #00b1ea;
-      --whatsapp: #25d366;
-
-      --radius-xl: 18px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #171727 0, #050509 55%, #020208 100%);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      gap: 12px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent-gold);
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .logo-text span:first-child {
-      font-weight: 600;
-    }
-
-    .logo-text span:last-child {
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .header-tagline {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 28px;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-gold);
-      margin-bottom: 10px;
-    }
-
-    .hero-title {
-      font-size: 30px;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .hero-title span.highlight {
-      color: var(--accent-gold);
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 480px;
-      margin-bottom: 16px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold-soft);
-      background: rgba(5, 5, 12, 0.9);
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .hero-badge span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent-gold);
-    }
-
-    .price-card {
-      background: rgba(10, 10, 18, 0.9);
-      border-radius: var(--radius-xl);
-      padding: 14px 14px 16px;
-      border: 1px solid rgba(245, 196, 91, 0.22);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 12px;
-    }
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .price-main {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .price-main span.currency {
-      font-size: 16px;
-      opacity: 0.8;
-    }
-
-    /* NUEVO: precio anterior tachado */
-    .price-old {
-      font-size: 16px;
-      color: var(--text-muted);
-      text-decoration: line-through;
-      opacity: 0.85;
-    }
-
-    /* NUEVO: precio promo */
-    .price-new {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .price-new span.amount {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .price-new span.once {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .price-tagline {
-      font-size: 11px;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      text-align: right;
-    }
-
-    .price-extra {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* NUEVO: mini info de promo */
-    .price-promo-line {
-      margin-top: 8px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .price-promo-line .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 196, 91, 0.25);
-      background: rgba(245, 196, 91, 0.06);
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    /* NUEVO: 3 tarjetitas */
-    .mini-cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .mini-card {
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(8, 8, 15, 0.9);
-      padding: 10px 10px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .mini-card .t {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-gold);
-      margin-bottom: 4px;
-    }
-
-    .mini-card .d {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.35;
-    }
-
-    .hero-list {
-      list-style: none;
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .hero-list li span.bullet {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: var(--accent-gold);
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .cta-row-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 4px;
-    }
-
-    /* AJUSTE: ahora son 2 botones */
-    .payment-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 9px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
-      white-space: nowrap;
-    }
-
-    .btn span.sub {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.8;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.45);
-    }
-
-    .btn:active {
-      transform: translateY(0);
-      box-shadow: none;
-      opacity: 0.9;
-    }
-
-    .btn-stripe {
-      background: var(--stripe);
-      color: #ffffff;
-    }
-
-    .btn-hotmart {
-      background: var(--hotmart);
-      color: #ffffff;
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-note strong {
-      color: var(--accent-gold);
-      font-weight: 500;
-    }
-
-    /* VIDEO */
-
-    .hero-video-card {
-      background: rgba(8, 8, 15, 0.9);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(245, 196, 91, 0.15);
-      padding: 10px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-video-tag {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(245, 196, 91, 0.35);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-top: 56.25%; /* 16:9 */
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .video-caption {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .video-caption span.highlight {
-      color: var(--accent-gold);
-    }
-
-    /* SECTION WRAPPER */
-
-    section {
-      margin-top: 30px;
-    }
-
-    .section-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 18px 16px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .section-title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 18px;
-    }
-
-    .check-list {
-      list-style: none;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .check {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--accent-gold);
-      flex-shrink: 0;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 196, 91, 0.25);
-      background: rgba(245, 196, 91, 0.06);
-      color: var(--text-muted);
-    }
-
-    .quote-block {
-      font-size: 12px;
-      color: var(--text-muted);
-      border-left: 2px solid rgba(245, 196, 91, 0.4);
-      padding-left: 10px;
-      margin-top: 8px;
-    }
-
-    .quote-block strong {
-      color: var(--accent-gold);
-    }
-
-    /* FAQ */
-
-    .faq-list {
-      display: grid;
-      gap: 10px;
-      font-size: 13px;
-    }
-
-    .faq-item {
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 10px 12px;
-      background: rgba(8, 8, 15, 0.9);
-    }
-
-    .faq-q {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .faq-a {
-      color: var(--text-muted);
-    }
-
-    /* WHATSAPP / FOOTER */
-
-    .wa-card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .btn-wa {
-      background: var(--whatsapp);
-      color: #ffffff;
-    }
-
-    .btn-wa span.icon {
-      font-size: 15px;
-    }
-
-    footer {
-      margin-top: 28px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-      opacity: 0.75;
-    }
-
-    footer span.brand {
-      color: var(--accent-gold);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-video-card {
-        order: -1;
-      }
-
-      .payment-buttons {
-        grid-template-columns: 1fr;
-      }
-
-      .mini-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-title {
-        font-size: 24px;
-      }
-
-      .page {
-        padding-inline: 14px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altos de Manzanares — Oportunidad Inmobiliaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --warm: #2c2417;
+    --gold: #b8963e;
+    --gold-light: #d4b062;
+    --cream: #faf6ef;
+    --cream-dark: #f0e8d8;
+    --sage: #5a6b52;
+    --sage-light: #7a8b72;
+    --white: #ffffff;
+    --text-secondary: #6b6560;
+    --border: #e0d8cc;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+color: var(–ink);
+background: var(–cream);
+line-height: 1.7;
+-webkit-font-smoothing: antialiased;
+}
+
+/* HERO */
+.hero {
+background: linear-gradient(165deg, #1a1a1a 0%, #2c2417 40%, #3d3225 100%);
+color: var(–cream);
+padding: 80px 24px 70px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: radial-gradient(ellipse at 30% 20%, rgba(184,150,62,0.08) 0%, transparent 60%),
+radial-gradient(ellipse at 70% 80%, rgba(184,150,62,0.05) 0%, transparent 50%);
+pointer-events: none;
+}
+
+.hero-eyebrow {
+font-size: 11px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–gold);
+font-weight: 600;
+margin-bottom: 24px;
+opacity: 0;
+animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(36px, 7vw, 64px);
+font-weight: 700;
+line-height: 1.1;
+margin-bottom: 20px;
+opacity: 0;
+animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero h1 span {
+display: block;
+font-style: italic;
+font-weight: 400;
+color: var(–gold-light);
+font-size: 0.6em;
+margin-top: 8px;
+}
+
+.hero-subtitle {
+font-size: 17px;
+color: rgba(250,246,239,0.65);
+max-width: 520px;
+margin: 0 auto;
+font-weight: 300;
+opacity: 0;
+animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-tags {
+display: flex;
+justify-content: center;
+gap: 12px;
+margin-top: 32px;
+flex-wrap: wrap;
+opacity: 0;
+animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.hero-tag {
+background: rgba(184,150,62,0.12);
+border: 1px solid rgba(184,150,62,0.25);
+color: var(–gold-light);
+padding: 8px 20px;
+border-radius: 100px;
+font-size: 13px;
+font-weight: 500;
+letter-spacing: 0.5px;
+}
+
+/* SECTIONS */
+.container {
+max-width: 720px;
+margin: 0 auto;
+padding: 0 24px;
+}
+
+section {
+padding: 64px 0;
+}
+
+.section-divider {
+width: 40px;
+height: 2px;
+background: var(–gold);
+margin-bottom: 32px;
+}
+
+.section-label {
+font-size: 11px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+font-weight: 600;
+margin-bottom: 12px;
+}
+
+h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(28px, 5vw, 38px);
+font-weight: 700;
+line-height: 1.2;
+margin-bottom: 20px;
+color: var(–warm);
+}
+
+h2 em {
+font-style: italic;
+color: var(–gold);
+}
+
+p {
+font-size: 16px;
+color: var(–text-secondary);
+margin-bottom: 16px;
+}
+
+p.lead {
+font-size: 18px;
+color: var(–ink);
+font-weight: 400;
+}
+
+/* FEATURES GRID */
+.features-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-top: 32px;
+}
+
+.feature-card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 24px;
+transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+border-color: var(–gold);
+box-shadow: 0 4px 20px rgba(184,150,62,0.08);
+transform: translateY(-2px);
+}
+
+.feature-icon {
+width: 36px;
+height: 36px;
+border-radius: 8px;
+background: linear-gradient(135deg, rgba(184,150,62,0.1), rgba(184,150,62,0.05));
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 14px;
+font-size: 16px;
+}
+
+.feature-card h4 {
+font-size: 15px;
+font-weight: 600;
+margin-bottom: 6px;
+color: var(–warm);
+}
+
+.feature-card p {
+font-size: 14px;
+margin-bottom: 0;
+line-height: 1.5;
+}
+
+/* PRICING BLOCK */
+.pricing-block {
+background: linear-gradient(165deg, #2c2417, #1a1a1a);
+border-radius: 16px;
+padding: 48px 40px;
+color: var(–cream);
+margin-top: 40px;
+position: relative;
+overflow: hidden;
+}
+
+.pricing-block::after {
+content: ‘’;
+position: absolute;
+top: -50%; right: -30%;
+width: 300px; height: 300px;
+background: radial-gradient(circle, rgba(184,150,62,0.1) 0%, transparent 70%);
+pointer-events: none;
+}
+
+.pricing-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0;
+border-bottom: 1px solid rgba(250,246,239,0.08);
+}
+
+.pricing-row:last-child { border-bottom: none; }
+
+.pricing-label {
+font-size: 14px;
+color: rgba(250,246,239,0.55);
+font-weight: 400;
+}
+
+.pricing-value {
+font-family: ‘Playfair Display’, serif;
+font-size: 22px;
+font-weight: 700;
+color: var(–gold-light);
+}
+
+.pricing-value.muted {
+color: rgba(250,246,239,0.35);
+text-decoration: line-through;
+font-size: 18px;
+}
+
+.pricing-highlight {
+background: rgba(184,150,62,0.12);
+border: 1px solid rgba(184,150,62,0.2);
+border-radius: 10px;
+padding: 20px 24px;
+margin-top: 24px;
+text-align: center;
+}
+
+.pricing-highlight p {
+color: var(–gold-light);
+font-size: 15px;
+font-weight: 500;
+margin: 0;
+}
+
+/* LEGAL SECTION */
+.legal-section {
+background: var(–white);
+border-radius: 16px;
+border: 1px solid var(–border);
+padding: 40px;
+margin-top: 32px;
+}
+
+.legal-section h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 22px;
+margin-bottom: 16px;
+color: var(–warm);
+}
+
+.legal-item {
+display: flex;
+gap: 14px;
+padding: 14px 0;
+border-bottom: 1px solid var(–border);
+align-items: flex-start;
+}
+
+.legal-item:last-child { border-bottom: none; }
+
+.legal-check {
+width: 22px;
+height: 22px;
+min-width: 22px;
+border-radius: 50%;
+background: var(–sage);
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 11px;
+font-weight: 700;
+margin-top: 2px;
+}
+
+.legal-item p {
+font-size: 15px;
+margin: 0;
+color: var(–ink);
+}
+
+.legal-item span {
+display: block;
+font-size: 13px;
+color: var(–text-secondary);
+margin-top: 4px;
+}
+
+/* PATHS */
+.paths-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 16px;
+margin-top: 32px;
+}
+
+.path-card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 24px 20px;
+text-align: center;
+transition: all 0.3s ease;
+}
+
+.path-card:hover {
+border-color: var(–sage);
+transform: translateY(-2px);
+}
+
+.path-number {
+font-family: ‘Playfair Display’, serif;
+font-size: 32px;
+color: var(–gold);
+font-weight: 700;
+margin-bottom: 8px;
+}
+
+.path-card h4 {
+font-size: 14px;
+font-weight: 600;
+margin-bottom: 8px;
+color: var(–warm);
+}
+
+.path-card p {
+font-size: 13px;
+line-height: 1.5;
+margin: 0;
+}
+
+/* PROFILE */
+.profile-section {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 32px;
+margin-top: 32px;
+}
+
+.profile-box {
+padding: 28px;
+border-radius: 12px;
+}
+
+.profile-yes {
+background: rgba(90,107,82,0.06);
+border: 1px solid rgba(90,107,82,0.15);
+}
+
+.profile-no {
+background: rgba(26,26,26,0.03);
+border: 1px solid var(–border);
+}
+
+.profile-box h4 {
+font-size: 14px;
+font-weight: 600;
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+
+.profile-yes h4 { color: var(–sage); }
+.profile-no h4 { color: var(–text-secondary); }
+
+.profile-box li {
+font-size: 15px;
+color: var(–ink);
+padding: 6px 0;
+list-style: none;
+padding-left: 20px;
+position: relative;
+}
+
+.profile-yes li::before {
+content: ‘→’;
+position: absolute;
+left: 0;
+color: var(–sage);
+font-weight: 600;
+}
+
+.profile-no li::before {
+content: ‘—’;
+position: absolute;
+left: 0;
+color: var(–text-secondary);
+}
+
+/* CTA */
+.cta-section {
+background: linear-gradient(165deg, #2c2417, #1a1a1a);
+color: var(–cream);
+padding: 72px 24px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.cta-section::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: radial-gradient(ellipse at 50% 50%, rgba(184,150,62,0.06) 0%, transparent 60%);
+}
+
+.cta-section h2 {
+color: var(–cream);
+margin-bottom: 16px;
+}
+
+.cta-section p {
+color: rgba(250,246,239,0.6);
+max-width: 480px;
+margin: 0 auto 36px;
+font-size: 17px;
+}
+
+.cta-button {
+display: inline-block;
+background: var(–gold);
+color: var(–warm);
+padding: 16px 48px;
+border-radius: 100px;
+font-size: 15px;
+font-weight: 600;
+text-decoration: none;
+letter-spacing: 0.5px;
+transition: all 0.3s ease;
+position: relative;
+z-index: 1;
+}
+
+.cta-button:hover {
+background: var(–gold-light);
+transform: translateY(-2px);
+box-shadow: 0 8px 30px rgba(184,150,62,0.25);
+}
+
+.cta-note {
+font-size: 13px;
+color: rgba(250,246,239,0.35);
+margin-top: 20px;
+}
+
+/* QUOTE */
+blockquote {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: 20px;
+color: var(–warm);
+border-left: 3px solid var(–gold);
+padding-left: 24px;
+margin: 40px 0;
+line-height: 1.5;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+.features-grid, .profile-section { grid-template-columns: 1fr; }
+.paths-grid { grid-template-columns: 1fr; }
+.pricing-block { padding: 32px 24px; }
+.legal-section { padding: 28px 20px; }
+.hero { padding: 60px 20px 50px; }
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+opacity: 0;
+transform: translateY(24px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+</style>
+
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="logo">
-        <div class="logo-mark">P</div>
-        <div class="logo-text">
-          <span>Persaltum</span>
-          <span>Método para vender online</span>
-        </div>
-      </div>
-      <div class="header-tagline">
-        Dejá de adivinar cómo vender online
-      </div>
-    </header>
 
-    <!-- HERO -->
-    <main>
-      <section class="hero">
-        <div>
-          <div class="eyebrow">Presentación del Método Persaltum</div>
-          <h1 class="hero-title">
-            Donde te explico <span class="highlight">paso a paso</span> cómo crear y automatizar tu negocio digital.
-          </h1>
-          <p class="hero-subtitle">
-            No necesitás ser influencer ni saber de tecnología. Solo necesitás un sistema simple que capte, eduque y venda por vos las 24 horas del día, aunque no estés conectado.
-          </p>
+<!-- HERO -->
 
-          <div class="hero-badge">
-            <span class="dot"></span>
-            <span>PDF estratégico + video introductorio</span>
-          </div>
-
-          <div class="price-card">
-            <div class="price-row">
-              <div class="price-main">
-                <span class="currency">USD</span>
-                <span class="price-old">97</span>
-
-                <span class="currency">USD</span>
-                <span class="price-new">
-                  <span class="amount">37</span>
-                  <span class="once">pago único</span>
-                </span>
-              </div>
-
-              <div class="price-tagline">
-                Promo por 30 días
-              </div>
-            </div>
-
-            <div class="price-promo-line">
-              <span class="badge">⏳ Promo activa 30 días</span>
-              <span class="badge">✅ Garantía 7 días</span>
-              <span class="badge">📩 Acceso inmediato</span>
-            </div>
-
-            <div class="price-extra">
-              Acceso inmediato al PDF del Método Persaltum + clase completa en la que te doy la información importante para comenzar y escalar tu negocio digital en redes sociales. Para empezar a vender con método.
-            </div>
-
-            <!-- 3 TARJETITAS -->
-            <div class="mini-cards">
-              <div class="mini-card">
-                <div class="t">1) PDF</div>
-                <div class="d">Guía clara y accionable para ordenar tu idea y empezar a vender con método.</div>
-              </div>
-              <div class="mini-card">
-                <div class="t">2) Clase</div>
-                <div class="d">Video introductorio donde te muestro el sistema paso a paso para aplicarlo.</div>
-              </div>
-              <div class="mini-card">
-                <div class="t">3) Garantía</div>
-                <div class="d">Tenés 7 días para probarlo: si no te sirve, pedís reembolso.</div>
-              </div>
-            </div>
-          </div>
-
-          <ul class="hero-list">
-            <li>
-              <span class="bullet">✓</span>
-              <span>Guía estratégica en PDF del Método Persaltum.</span>
-            </li>
-            <li>
-              <span class="bullet">✓</span>
-              <span>Video explicativo donde ves, paso a paso, cómo crear y automatizar tu negocio digital.</span>
-            </li>
-            <li>
-              <span class="bullet">✓</span>
-              <span>Acceso inmediato después del pago, sin esperas ni procesos complicados.</span>
-            </li>
-          </ul>
-
-          <div class="hero-ctas">
-            <div>
-              <div class="cta-row-label">Elegí tu forma de pago</div>
-              <div class="payment-buttons">
-                <a
-                  class="btn btn-stripe"
-                  href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Comprar</span>
-                </a>
-                <a
-                  class="btn btn-hotmart"
-                  href="https://go.hotmart.com/V101694536F"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Ingresar</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-note">
-            <strong>Importante:</strong> si pagás por Hotmart, antes de finalizar la compra vas a ver
-            opciones de productos adicionales para acelerar tus resultados (order bump y upsells). Podés
-            aceptarlos o no, el Método Persaltum sigue siendo tuyo igual.
-            Si querés pagar con Mercado Pago (Argentina) comunicate al WhatsApp +549113932-2197.
-          </div>
-        </div>
-
-        <!-- VIDEO -->
-        <div class="hero-video-card">
-          <div class="hero-video-tag">VSL + clase explicativa</div>
-          <div class="video-wrapper">
-            <iframe
-              src="https://www.youtube.com/embed/SJCvhQZMuT4"
-              title="Presentación del Método Persaltum"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="video-caption">
-            En este video, <span class="highlight">Pablo Galli</span> aporta información que tenés que saber para comenzar tu negocio digital y escalarlo en redes sociales. El sentido de utilizar la Inteligencia Artificial a tu favor.
-          </div>
-        </div>
-      </section>
-
-      <!-- QUÉ INCLUYE -->
-      <section>
-        <div class="section-card">
-          <h2 class="section-title">¿Qué incluye el Método Persaltum en esta versión?</h2>
-          <p class="section-subtitle">
-            Esta no es una teoría más. Es el resumen estratégico de años de experiencia, pruebas reales y
-            miles de dólares invertidos en formación, condensados en un sistema simple de aplicar.
-          </p>
-
-          <div class="grid-2">
-            <div>
-              <ul class="check-list">
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>PDF estratégico del Método Persaltum</strong><br />
-                    Un documento claro, directo y accionable donde ves el mapa completo del sistema: captación,
-                    contenido, automatización y venta.
-                  </div>
-                </li>
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>Video explicativo paso a paso</strong><br />
-                    Una clase completa en donde te doy las herramientas e información que necesitás saber para comenzar y escalar tu negocio en redes, con estrategia de contenido y publicación con propósito de venta.
-                  </div>
-                </li>
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>Ruta simple para automatizar tu negocio digital</strong><br />
-                    Qué herramientas usar, cómo conectarlas entre sí, para no perder tiempo ni dinero.
-                  </div>
-                </li>
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>Enfoque sin tecnicismos</strong><br />
-                    Lenguaje claro, sin palabras raras ni conceptos vacíos. Lo que necesitás saber para vender,
-                    explicado simple.
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <div class="quote-block">
-                <strong>Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</strong><br />
-                El Método Persaltum está diseñado para que dejes de improvisar y empieces a construir una empresa
-                digital con base sólida, aunque hoy sientas que estás empezando de cero.
-              </div>
-              <div class="pill-list">
-                <div class="pill">Ideal si recién empezás</div>
-                <div class="pill">Sirve si ya vendés pero estás estancado</div>
-                <div class="pill">Aplicable a servicios, cursos y mentorías privadas</div>
-                <div class="pill">Pensado para todo el que quiera comenzar a vender en redes</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- RESULTADOS -->
-      <section>
-        <div class="section-card">
-          <h2 class="section-title">¿Qué vas a lograr con este material?</h2>
-          <p class="section-subtitle">
-            El objetivo es que termines el PDF y la clase explicativa con claridad mental, foco y un plan simple
-            para avanzar, no con más dudas.
-          </p>
-
-          <ul class="check-list">
-            <li>
-              <div class="check">✓</div>
-              <div>Entender cuál es el modelo de negocio digital que mejor encaja con vos.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Ver, paso a paso, cómo funciona un sistema que capta, educa y vende por vos.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Dejar de improvisar contenido y empezar a comunicar con estrategia.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Saber qué herramientas usar (y cuáles evitar) para automatizar sin volverte loco.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Tener un primer mapa claro para escalar después a mentorías, cursos o una universidad digital.</div>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- FAQ + WHATSAPP -->
-      <section>
-        <div class="grid-2">
-          <div class="section-card">
-            <h2 class="section-title">Preguntas frecuentes</h2>
-            <div class="faq-list">
-              <div class="faq-item">
-                <div class="faq-q">¿Cuándo recibo el material?</div>
-                <div class="faq-a">
-                  El acceso es inmediato. Apenas se acredita el pago, recibís el PDF del Método Persaltum y el acceso
-                  al video introductorio en tu correo.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">¿Necesito experiencia previa en marketing o tecnología?</div>
-                <div class="faq-a">
-                  No. El material está pensado para que lo entienda alguien que recién empieza. Si ya tenés experiencia,
-                  te va a ayudar a ordenar y simplificar todo lo que venís haciendo.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">¿Qué pasa con los productos adicionales (upsells)?</div>
-                <div class="faq-a">
-                  Dentro del checkout de Hotmart vas a ver opciones extra (como el acceso al Módulo 1 completo y otros
-                  materiales para acelerar tus resultados). Son opcionales. Podés aceptar o no, y seguirás teniendo el
-                  Método Persaltum igual.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">¿Qué pasa si tengo dudas después de comprar?</div>
-                <div class="faq-a">
-                  Podés entrar al grupo de WhatsApp exclusivo donde vas a recibir novedades, avisos de nuevas clases y
-                  lanzamientos futuros. Desde ahí también vas a saber cómo acceder a mentorías y programas más avanzados.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-card wa-card">
-            <div>
-              <h2 class="section-title">Entrá al grupo silencioso de novedades</h2>
-              <p class="section-subtitle">
-                Te sumo a un grupo de WhatsApp donde solo vas a ver noticias, lanzamientos y avisos importantes de
-                la Universidad Digital del Infoproducto. Sin spam, sin mensajes de otros usuarios.
-              </p>
-            </div>
-
-            <a
-              class="btn btn-wa"
-              href="https://chat.whatsapp.com/Gg1xzEhj28vEJVSth0VLzG"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="icon">💬</span>
-              <span>Unirme al grupo de novedades</span>
-            </a>
-
-            <p class="hero-note">
-              Solo admins pueden publicar. Es un canal para avisarte de nuevas clases, actualizaciones y oportunidades
-              especiales relacionadas con el Método Persaltum.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA FINAL -->
-      <section>
-        <div class="section-card">
-          <h2 class="section-title">Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</h2>
-          <p class="section-subtitle">
-            Este es el primer paso: dejar de adivinar y empezar a usar un sistema que ya está probado. El resto lo vamos
-            a construir juntos, paso a paso.
-          </p>
-
-          <div class="hero-ctas">
-            <div class="cta-row-label">Empezá ahora con el Método Persaltum</div>
-            <div class="payment-buttons">
-              <a
-                class="btn btn-stripe"
-                href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Comprar</span>
-              </a>
-              <a
-                class="btn btn-hotmart"
-                href="https://go.hotmart.com/V101694536F"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Ingresar al Hotmart</span>
-                <span class="sub">con upsells</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        <span class="brand">Persaltum</span> · Universidad Digital del Infoproducto · Todos los derechos reservados.
-      </p>
-    </footer>
+<header class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Oportunidad exclusiva</p>
+    <h1>Altos de Manzanares<span>Casa lista para vivir, precio que el mercado todavía no corrigió</span></h1>
+    <p class="hero-subtitle">Una propiedad habitable con precio por debajo del mercado y potencial concreto de valorización a mediano plazo.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Uso inmediato</span>
+      <span class="hero-tag">–25% vs. mercado</span>
+      <span class="hero-tag">Alto potencial</span>
+    </div>
   </div>
+</header>
+
+<!-- LA PROPIEDAD -->
+
+<section>
+  <div class="container reveal">
+    <div class="section-divider"></div>
+    <p class="section-label">La propiedad</p>
+    <h2>Entrás mañana <em>con la valija</em></h2>
+    <p class="lead">Esto no es un proyecto, un pozo ni una promesa. Es una casa terminada, funcional y habitable desde el día uno.</p>
+    <p>Ambientes construidos, espacios exteriores consolidados y un entorno residencial con perfil de barrio cerrado. Pensada para vivir, para descansar o para generar ingresos desde el primer mes.</p>
+
+```
+<div class="features-grid">
+  <div class="feature-card">
+    <div class="feature-icon">🏠</div>
+    <h4>100% construida</h4>
+    <p>Todos los ambientes terminados y listos para habitar sin obra adicional.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">🌿</div>
+    <h4>Entorno country</h4>
+    <p>Barrio residencial tranquilo con espacios verdes y perfil de vida premium.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">📅</div>
+    <h4>Ocupación inmediata</h4>
+    <p>Podés vivir, alquilar o usar como casa de fin de semana desde el día 1.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">💰</div>
+    <h4>Generá ingresos</h4>
+    <p>Ideal para renta temporal o permanente mientras se valoriza tu activo.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- EL NEGOCIO -->
+
+<section style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container reveal">
+    <div class="section-divider"></div>
+    <p class="section-label">La oportunidad</p>
+    <h2>Lo que otros <em>no ven</em></h2>
+    <p class="lead">El precio actual refleja una situación documental transitoria, no el valor real del inmueble. Esa diferencia es tu margen.</p>
+
+```
+<div class="pricing-block">
+  <div class="pricing-row">
+    <span class="pricing-label">Valor de mercado con escritura</span>
+    <span class="pricing-value muted">100%</span>
+  </div>
+  <div class="pricing-row">
+    <span class="pricing-label">Precio actual de venta</span>
+    <span class="pricing-value">~75%</span>
+  </div>
+  <div class="pricing-row">
+    <span class="pricing-label">Tu ventaja de entrada</span>
+    <span class="pricing-value">25%</span>
+  </div>
+  <div class="pricing-highlight">
+    <p>El descuento ya está aplicado. La valorización es lo que viene.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- SITUACIÓN LEGAL -->
+
+<section>
+  <div class="container reveal">
+    <div class="section-divider"></div>
+    <p class="section-label">Transparencia total</p>
+    <h2>La situación legal, <em>sin letra chica</em></h2>
+    <p class="lead">La propiedad se encuentra bajo título imperfecto: aún no cuenta con escritura. Esto no es un problema del inmueble — es una situación común en desarrollos que todavía están en proceso de regularización.</p>
+
+```
+<div class="legal-section">
+  <h3>¿Por qué es una operación segura?</h3>
+  <div class="legal-item">
+    <span class="legal-check">✓</span>
+    <div>
+      <p>Posesión real, pública y continua</p>
+      <span>Más de 10 años de ocupación documentada e ininterrumpida</span>
+    </div>
+  </div>
+  <div class="legal-item">
+    <span class="legal-check">✓</span>
+    <div>
+      <p>Inversión acreditable</p>
+      <span>Construcción y mejoras con respaldo documental</span>
+    </div>
+  </div>
+  <div class="legal-item">
+    <span class="legal-check">✓</span>
+    <div>
+      <p>Sin conflictos posesorios</p>
+      <span>No existen reclamos ni disputas conocidas sobre la propiedad</span>
+    </div>
+  </div>
+  <div class="legal-item">
+    <span class="legal-check">✓</span>
+    <div>
+      <p>Marco legal protector</p>
+      <span>La posesión continua y de buena fe tiene protección jurídica concreta</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- CAMINOS A ESCRITURAR -->
+
+<section style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container reveal">
+    <div class="section-divider"></div>
+    <p class="section-label">Hoja de ruta</p>
+    <h2>Tres caminos hacia <em>la escritura</em></h2>
+    <p>La regularización no es una posibilidad abstracta. Existen vías concretas y ya hay base sólida para avanzar.</p>
+
+```
+<div class="paths-grid">
+  <div class="path-card">
+    <div class="path-number">1</div>
+    <h4>Usucapión</h4>
+    <p>Prescripción adquisitiva. Buena fe: 10 años. Mala fe: 20. Ya se cuenta con base sólida.</p>
+  </div>
+  <div class="path-card">
+    <div class="path-number">2</div>
+    <h4>Escrituración judicial</h4>
+    <p>Vía reconstrucción de antecedentes registrales del desarrollo.</p>
+  </div>
+  <div class="path-card">
+    <div class="path-number">3</div>
+    <h4>Regularización del barrio</h4>
+    <p>Es altamente probable que el desarrollo se regularice con el tiempo.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- PERFIL -->
+
+<section>
+  <div class="container reveal">
+    <div class="section-divider"></div>
+    <p class="section-label">Perfil de comprador</p>
+    <h2>¿Es para vos?</h2>
+
+```
+<div class="profile-section">
+  <div class="profile-box profile-yes">
+    <h4>Sí, si buscás</h4>
+    <ul>
+      <li>Vivir ya, sin esperar</li>
+      <li>Comprar debajo del mercado</li>
+      <li>Inversión con visión a mediano plazo</li>
+      <li>Entender activos posesorios como oportunidad</li>
+    </ul>
+  </div>
+  <div class="profile-box profile-no">
+    <h4>No, si necesitás</h4>
+    <ul>
+      <li>Escritura inmediata al cierre</li>
+      <li>Operación bancaria tradicional</li>
+      <li>Cero tolerancia a situación documental</li>
+    </ul>
+  </div>
+</div>
+
+<blockquote>El que compra acá no compra con miedo. Compra con visión.</blockquote>
+```
+
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section">
+  <div class="container reveal">
+    <h2>Algunas oportunidades no esperan</h2>
+    <p>Coordiná una visita. Cuando la veas en persona, vas a entender por qué esta propiedad no va a estar disponible mucho más tiempo.</p>
+    <a href="#" class="cta-button">Coordinar visita →</a>
+    <p class="cta-note">Consulta sin compromiso · Toda la documentación disponible para revisión</p>
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
