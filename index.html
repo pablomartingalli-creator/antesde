@@ -1,776 +1,843 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Altos de Manzanares — Oportunidad Inmobiliaria</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  /* ============================================================
-     🎨 COLORES — Cambiá estos valores para modificar toda la página
-     ============================================================ */
-  :root {
-    --gold: #c9a227;            /* Dorado principal */
-    --gold-dark: #a8871e;       /* Dorado oscuro (hover botones) */
-    --gold-light: #e8cc5a;      /* Dorado claro (acentos) */
-    --gold-bg: #fdf8e8;         /* Fondo dorado suave */
-    --brown: #3b2f1e;           /* Marrón títulos */
-    --brown-light: #5c4a32;     /* Marrón secundario */
-    --cream: #fffdf7;           /* Fondo principal */
-    --cream-warm: #faf3e0;      /* Fondo secciones alternas */
-    --text-dark: #2a2318;       /* Texto principal */
-    --text-body: #5a4e3f;       /* Texto cuerpo */
-    --text-light: #8a7d6b;      /* Texto secundario */
-    --white: #ffffff;
-    --green-wa: #25D366;        /* Verde WhatsApp */
-    --green-wa-dark: #1da851;   /* Verde WhatsApp hover */
-    --sage: #6b8c5a;            /* Verde sage (checks) */
-    --border: #e8dcc8;          /* Bordes */
-  }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-font-family: ‘DM Sans’, sans-serif;
-color: var(–text-dark);
-background: var(–cream);
-line-height: 1.7;
--webkit-font-smoothing: antialiased;
-}
-
-/* ==================== HERO ==================== */
-.hero {
-background: linear-gradient(170deg, #4a3a22 0%, #2a1f10 50%, #1a1508 100%);
-color: var(–cream);
-padding: 72px 24px 64px;
-text-align: center;
-position: relative;
-overflow: hidden;
-}
-
-.hero::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background:
-radial-gradient(ellipse at 20% 30%, rgba(201,162,39,0.15) 0%, transparent 55%),
-radial-gradient(ellipse at 80% 70%, rgba(201,162,39,0.1) 0%, transparent 50%);
-pointer-events: none;
-}
-
-/* Gold top bar */
-.hero::after {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 4px;
-background: linear-gradient(90deg, var(–gold), var(–gold-light), var(–gold));
-}
-
-.hero-eyebrow {
-font-size: 11px;
-letter-spacing: 5px;
-text-transform: uppercase;
-color: var(–gold-light);
-font-weight: 700;
-margin-bottom: 24px;
-opacity: 0;
-animation: fadeUp 0.7s ease forwards 0.2s;
-}
-
-.hero h1 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(34px, 8vw, 58px);
-font-weight: 700;
-line-height: 1.1;
-color: #fff;
-margin-bottom: 16px;
-opacity: 0;
-animation: fadeUp 0.7s ease forwards 0.35s;
-}
-
-.hero h1 span {
-display: block;
-font-family: ‘Playfair Display’, serif;
-font-style: italic;
-font-weight: 400;
-color: var(–gold-light);
-font-size: 0.48em;
-margin-top: 10px;
-line-height: 1.4;
-}
-
-.hero-subtitle {
-font-size: 16px;
-color: rgba(255,253,247,0.7);
-max-width: 480px;
-margin: 0 auto;
-font-weight: 300;
-opacity: 0;
-animation: fadeUp 0.7s ease forwards 0.5s;
-}
-
-.hero-tags {
-display: flex;
-justify-content: center;
-gap: 10px;
-margin-top: 28px;
-flex-wrap: wrap;
-opacity: 0;
-animation: fadeUp 0.7s ease forwards 0.65s;
-}
-
-.hero-tag {
-background: rgba(201,162,39,0.2);
-border: 1px solid rgba(201,162,39,0.45);
-color: var(–gold-light);
-padding: 8px 20px;
-border-radius: 100px;
-font-size: 12px;
-font-weight: 600;
-letter-spacing: 0.5px;
-}
-
-/* ==================== CONTAINERS ==================== */
-.container {
-max-width: 680px;
-margin: 0 auto;
-padding: 0 24px;
-}
-
-section {
-padding: 56px 0;
-}
-
-section.alt {
-background: var(–cream-warm);
-border-top: 1px solid var(–border);
-border-bottom: 1px solid var(–border);
-}
-
-.section-divider {
-width: 36px;
-height: 3px;
-background: var(–gold);
-border-radius: 2px;
-margin-bottom: 24px;
-}
-
-.section-label {
-font-size: 10.5px;
-letter-spacing: 3.5px;
-text-transform: uppercase;
-color: var(–gold);
-font-weight: 700;
-margin-bottom: 10px;
-}
-
-h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(26px, 5.5vw, 36px);
-font-weight: 700;
-line-height: 1.2;
-margin-bottom: 18px;
-color: var(–brown);
-}
-
-h2 em {
-font-style: italic;
-color: var(–gold);
-}
-
-p { font-size: 15.5px; color: var(–text-body); margin-bottom: 14px; }
-p.lead { font-size: 17px; color: var(–text-dark); font-weight: 400; }
-
-/* ==================== FEATURE CARDS ==================== */
-.features-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 14px;
-margin-top: 28px;
-}
-
-.feature-card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 14px;
-padding: 22px 20px;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
-}
-
-.feature-card::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 3px;
-background: var(–gold);
-transform: scaleX(0);
-transition: transform 0.3s ease;
-}
-
-.feature-card:hover::before { transform: scaleX(1); }
-.feature-card:hover { box-shadow: 0 6px 24px rgba(201,162,39,0.12); transform: translateY(-2px); }
-
-.feature-dot {
-width: 10px; height: 10px;
-border-radius: 50%;
-background: var(–gold);
-margin-bottom: 14px;
-}
-
-.feature-card h4 {
-font-size: 14.5px;
-font-weight: 700;
-margin-bottom: 6px;
-color: var(–brown);
-}
-
-.feature-card p { font-size: 13.5px; margin-bottom: 0; line-height: 1.5; }
-
-/* ==================== PRICING BLOCK ==================== */
-.pricing-block {
-background: linear-gradient(160deg, #3b2f1e, #2a1f10);
-border-radius: 16px;
-padding: 40px 32px;
-color: var(–cream);
-margin-top: 32px;
-position: relative;
-overflow: hidden;
-border: 1px solid rgba(201,162,39,0.2);
-}
-
-.pricing-block::after {
-content: ‘’;
-position: absolute;
-top: -40%; right: -20%;
-width: 300px; height: 300px;
-background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 65%);
-pointer-events: none;
-}
-
-.pricing-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 14px 0;
-border-bottom: 1px solid rgba(255,253,247,0.08);
-}
-.pricing-row:last-of-type { border-bottom: none; }
-
-.pricing-label { font-size: 14px; color: rgba(255,253,247,0.6); }
-
-.pricing-value {
-font-family: ‘Playfair Display’, serif;
-font-size: 22px;
-font-weight: 700;
-color: var(–gold-light);
-}
-
-.pricing-value.crossed {
-color: rgba(255,253,247,0.3);
-text-decoration: line-through;
-font-size: 18px;
-}
-
-.pricing-highlight {
-background: rgba(201,162,39,0.15);
-border: 1px solid rgba(201,162,39,0.3);
-border-radius: 10px;
-padding: 16px 20px;
-margin-top: 20px;
-text-align: center;
-}
-
-.pricing-highlight p {
-color: var(–gold-light);
-font-size: 14.5px;
-font-weight: 600;
-margin: 0;
-}
-
-/* ==================== LEGAL SECTION ==================== */
-.legal-box {
-background: var(–white);
-border-radius: 16px;
-border: 1px solid var(–border);
-padding: 32px 28px;
-margin-top: 28px;
-}
-
-.legal-box h3 {
-font-family: ‘Playfair Display’, serif;
-font-size: 20px;
-margin-bottom: 20px;
-color: var(–brown);
-}
-
-.legal-item {
-display: flex;
-gap: 14px;
-padding: 14px 0;
-border-bottom: 1px solid var(–border);
-align-items: flex-start;
-}
-.legal-item:last-child { border-bottom: none; }
-
-.legal-check {
-width: 24px; height: 24px; min-width: 24px;
-border-radius: 50%;
-background: var(–sage);
-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 12px;
-font-weight: 800;
-margin-top: 1px;
-}
-
-.legal-item strong {
-display: block;
-font-size: 14.5px;
-color: var(–text-dark);
-margin-bottom: 3px;
-}
-
-.legal-item span {
-font-size: 13px;
-color: var(–text-light);
-}
-
-/* ==================== PATH CARDS ==================== */
-.paths-grid {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 14px;
-margin-top: 28px;
-}
-
-.path-card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 14px;
-padding: 24px 16px;
-text-align: center;
-transition: all 0.3s ease;
-}
-
-.path-card:hover { border-color: var(–gold); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201,162,39,0.1); }
-
-.path-number {
-font-family: ‘Playfair Display’, serif;
-font-size: 36px;
-color: var(–gold);
-font-weight: 700;
-line-height: 1;
-margin-bottom: 10px;
-}
-
-.path-card h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(–brown); }
-.path-card p { font-size: 12.5px; line-height: 1.5; margin: 0; }
-
-/* ==================== PROFILE ==================== */
-.profile-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 16px;
-margin-top: 28px;
-}
-
-.profile-box { padding: 24px; border-radius: 14px; }
-
-.profile-yes {
-background: #f2f7ef;
-border: 1px solid #c8dabe;
-}
-
-.profile-no {
-background: #f8f5f0;
-border: 1px solid var(–border);
-}
-
-.profile-box h4 {
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 2px;
-text-transform: uppercase;
-margin-bottom: 16px;
-}
-
-.profile-yes h4 { color: var(–sage); }
-.profile-no h4 { color: var(–text-light); }
-
-.profile-box li {
-font-size: 14px;
-color: var(–text-dark);
-padding: 5px 0 5px 22px;
-list-style: none;
-position: relative;
-}
-
-.profile-yes li::before { content: ‘→’; position: absolute; left: 0; color: var(–sage); font-weight: 700; }
-.profile-no li::before { content: ‘—’; position: absolute; left: 0; color: var(–text-light); }
-
-/* ==================== QUOTE ==================== */
-blockquote {
-font-family: ‘Playfair Display’, serif;
-font-style: italic;
-font-size: 19px;
-color: var(–brown);
-border-left: 3px solid var(–gold);
-padding-left: 24px;
-margin: 36px 0;
-line-height: 1.5;
-}
-
-/* ==================== CTA ==================== */
-.cta-section {
-background: linear-gradient(170deg, #3b2f1e, #1a1508);
-color: var(–cream);
-padding: 64px 24px;
-text-align: center;
-position: relative;
-overflow: hidden;
-}
-
-.cta-section::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background: radial-gradient(ellipse at 50% 40%, rgba(201,162,39,0.1) 0%, transparent 60%);
-}
-
-.cta-section h2 { color: #fff; margin-bottom: 12px; }
-.cta-section p { color: rgba(255,253,247,0.6); max-width: 460px; margin: 0 auto 32px; font-size: 16px; }
-
-/* ============================================================
-📱 BOTÓN DE WHATSAPP — Cambiá el número en el HTML más abajo
-============================================================ */
-.cta-whatsapp {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-background: var(–green-wa);
-color: #fff;
-padding: 16px 40px;
-border-radius: 100px;
-font-size: 16px;
-font-weight: 700;
-text-decoration: none;
-letter-spacing: 0.3px;
-transition: all 0.3s ease;
-position: relative;
-z-index: 1;
-box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-}
-
-.cta-whatsapp:hover {
-background: var(–green-wa-dark);
-transform: translateY(-2px);
-box-shadow: 0 8px 30px rgba(37,211,102,0.4);
-}
-
-.cta-whatsapp svg { width: 22px; height: 22px; fill: #fff; }
-
-.cta-gold {
-display: inline-block;
-background: var(–gold);
-color: var(–brown);
-padding: 14px 36px;
-border-radius: 100px;
-font-size: 14px;
-font-weight: 700;
-text-decoration: none;
-transition: all 0.3s ease;
-margin-left: 12px;
-position: relative;
-z-index: 1;
-}
-
-.cta-gold:hover { background: var(–gold-dark); transform: translateY(-2px); }
-
-.cta-buttons {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 14px;
-flex-wrap: wrap;
-}
-
-.cta-note {
-font-size: 12.5px;
-color: rgba(255,253,247,0.35);
-margin-top: 20px;
-position: relative;
-z-index: 1;
-}
-
-/* ==================== ANIMATIONS ==================== */
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-opacity: 0;
-transform: translateY(20px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 600px) {
-.features-grid, .profile-grid { grid-template-columns: 1fr; }
-.paths-grid { grid-template-columns: 1fr; }
-.pricing-block { padding: 28px 20px; }
-.legal-box { padding: 24px 18px; }
-.hero { padding: 56px 20px 48px; }
-.cta-buttons { flex-direction: column; }
-.cta-gold { margin-left: 0; }
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Persaltum | Universidad Digital del Infoproducto</title>
+  <meta name="description" content="Convertí lo que sabés en un sistema que venda todos los días. Accedé a Persaltum, Sala Inicial, Sala Business y Club Premium." />
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#141417;
+      --card-2:#1b1c20;
+      --text:#f5f5f5;
+      --muted:#b7b7c2;
+      --gold:#d9aa45;
+      --gold-2:#f1cc77;
+      --line:#2a2b30;
+      --green:#19c37d;
+      --danger:#ff6b6b;
+      --shadow:0 20px 50px rgba(0,0,0,.35);
+      --radius:22px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(217,170,69,.10), transparent 28%),
+        linear-gradient(180deg,#09090b,#0f1014 45%,#0b0b0d);
+      color:var(--text);
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .container{width:min(var(--max), 92%); margin:0 auto}
+    .section{padding:72px 0}
+    .small{font-size:.95rem;color:var(--muted)}
+    .tag{
+      display:inline-block;
+      padding:10px 16px;
+      border:1px solid rgba(217,170,69,.25);
+      background:rgba(217,170,69,.08);
+      color:var(--gold-2);
+      border-radius:999px;
+      font-weight:700;
+      font-size:.85rem;
+      letter-spacing:.2px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:16px 24px;
+      border-radius:14px;
+      font-weight:800;
+      transition:.2s ease;
+      cursor:pointer;
+      border:none;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      color:#111;
+      box-shadow:0 10px 25px rgba(217,170,69,.25);
+    }
+    .btn-secondary{
+      background:#1c1d22;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(14px);
+      background:rgba(9,9,11,.7);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+      gap:18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--gold),#8e6920);
+      color:#111;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+    .nav-links{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.95rem;
+      flex-wrap:wrap;
+    }
+
+    .hero{
+      padding:64px 0 40px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:38px;
+      align-items:center;
+    }
+    .hero h1{
+      font-size:clamp(2.3rem, 5vw, 4.4rem);
+      line-height:1.02;
+      margin:18px 0 18px;
+      letter-spacing:-1.8px;
+    }
+    .hero p{
+      font-size:1.12rem;
+      line-height:1.7;
+      color:var(--muted);
+      max-width:760px;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:26px;
+    }
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:28px;
+    }
+    .point{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:16px;
+      color:var(--muted);
+    }
+    .point strong{display:block;color:var(--text);margin-bottom:6px}
+
+    .video-card{
+      background:linear-gradient(180deg,#17171c,#111217);
+      border:1px solid rgba(217,170,69,.15);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .video-box{
+      aspect-ratio:16/9;
+      border-radius:20px;
+      overflow:hidden;
+      background:#000;
+      border:1px solid rgba(255,255,255,.05);
+    }
+    .video-box iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .video-note{
+      padding:14px 8px 4px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .headline{
+      text-align:center;
+      max-width:850px;
+      margin:0 auto 42px;
+    }
+    .headline h2{
+      font-size:clamp(1.8rem, 4vw, 3rem);
+      margin:14px 0 10px;
+      line-height:1.08;
+      letter-spacing:-1px;
+    }
+    .headline p{
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.7;
+      margin:0;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.25rem;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      background:rgba(217,170,69,.12);
+      border:1px solid rgba(217,170,69,.18);
+      color:var(--gold-2);
+      margin-bottom:16px;
+    }
+
+    .offers{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:24px;
+      align-items:stretch;
+    }
+    .offer{
+      position:relative;
+      background:linear-gradient(180deg,#141417,#0f1014);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .offer.popular{
+      border:1px solid rgba(217,170,69,.35);
+      transform:translateY(-8px);
+    }
+    .offer.popular::before{
+      content:"Más elegida";
+      position:absolute;
+      top:18px;
+      right:18px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      color:#111;
+      font-weight:900;
+      font-size:.78rem;
+      padding:8px 12px;
+      border-radius:999px;
+    }
+    .offer .name{
+      font-size:1.45rem;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+    .offer .desc{
+      color:var(--muted);
+      line-height:1.65;
+      min-height:70px;
+    }
+    .price{
+      margin:20px 0 4px;
+      font-size:2.1rem;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+    .price small{
+      font-size:.95rem;
+      color:var(--muted);
+      font-weight:600;
+    }
+    .old-price{
+      color:#8f9098;
+      text-decoration:line-through;
+      font-size:.95rem;
+      margin-bottom:18px;
+    }
+    .features{
+      display:grid;
+      gap:10px;
+      margin:20px 0 26px;
+      padding:0;
+      list-style:none;
+    }
+    .features li{
+      color:var(--muted);
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      line-height:1.55;
+    }
+    .features li::before{
+      content:"✓";
+      color:var(--green);
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .bonus-wrap{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:20px;
+    }
+    .bonus{
+      background:linear-gradient(180deg,#17181d,#111217);
+      border:1px solid rgba(217,170,69,.12);
+      border-radius:22px;
+      padding:24px;
+    }
+    .bonus h4{
+      margin:0 0 8px;
+      font-size:1.1rem;
+    }
+    .bonus p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .checklist{
+      display:grid;
+      gap:12px;
+      padding:0;
+      margin:0;
+      list-style:none;
+    }
+    .checklist li{
+      padding:16px 18px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      color:var(--muted);
+      line-height:1.65;
+    }
+    .checklist strong{color:var(--text)}
+
+    .faq{
+      display:grid;
+      gap:14px;
+    }
+    details{
+      background:linear-gradient(180deg,#16171b,#101116);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:18px 20px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      color:var(--text);
+    }
+    details p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:14px 0 0;
+    }
+
+    .cta-box{
+      text-align:center;
+      padding:44px 26px;
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(217,170,69,.10),rgba(217,170,69,.04));
+      border:1px solid rgba(217,170,69,.18);
+      box-shadow:var(--shadow);
+    }
+    .cta-box h2{
+      margin:0 0 12px;
+      font-size:clamp(1.9rem,4vw,3rem);
+      line-height:1.08;
+    }
+    .cta-box p{
+      color:var(--muted);
+      max-width:720px;
+      margin:0 auto 24px;
+      line-height:1.7;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.05);
+      padding:28px 0 40px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .offers,
+      .bonus-wrap{
+        grid-template-columns:1fr;
+      }
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+      .offer.popular{
+        transform:none;
+      }
+      .nav-wrap{
+        flex-direction:column;
+        justify-content:center;
+        padding:14px 0;
+      }
+      .nav-links{
+        justify-content:center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ==================== HERO ==================== -->
+  <nav class="nav">
+    <div class="container nav-wrap">
+      <a href="#inicio" class="brand">
+        <div class="logo">P</div>
+        <div>
+          <div>Persaltum</div>
+          <div class="small">Universidad Digital del Infoproducto</div>
+        </div>
+      </a>
 
-<header class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Oportunidad exclusiva</p>
-    <h1>Altos de Manzanares<span>Casa lista para vivir, precio que el mercado todavía no corrigió</span></h1>
-    <p class="hero-subtitle">Propiedad habitable con precio por debajo del mercado y potencial concreto de valorización a mediano plazo.</p>
-    <div class="hero-tags">
-      <span class="hero-tag">Uso inmediato</span>
-      <span class="hero-tag">–25% vs. mercado</span>
-      <span class="hero-tag">Alto potencial</span>
+      <div class="nav-links">
+        <a href="#programas">Programas</a>
+        <a href="#bonos">Bonos</a>
+        <a href="#incluye">Qué incluye</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#club-premium">Club Premium</a>
+      </div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<!-- ==================== LA PROPIEDAD ==================== -->
+  <header class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <span class="tag">Tu conocimiento puede convertirse en un negocio digital real</span>
+        <h1>Convertí lo que sabés en un sistema que venda todos los días</h1>
+        <p>
+          Aprendé a crear tu infoproducto, venderlo por redes sociales y automatizar todo tu sistema
+          para generar ingresos online con una estructura clara, simple y escalable.
+        </p>
 
-<section>
-  <div class="container reveal">
-    <div class="section-divider"></div>
-    <p class="section-label">La propiedad</p>
-    <h2>Entrás mañana <em>con la valija</em></h2>
-    <p class="lead">Esto no es un proyecto, un pozo ni una promesa. Es una casa terminada, funcional y habitable desde el día uno.</p>
-    <p>Ambientes construidos, espacios exteriores consolidados y un entorno residencial con perfil de barrio cerrado. Pensada para vivir, descansar o generar ingresos desde el primer mes.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#programas">Ver programas</a>
+          <a class="btn btn-secondary" href="#vsl">Ver presentación</a>
+        </div>
 
-```
-<div class="features-grid">
-  <div class="feature-card">
-    <div class="feature-dot"></div>
-    <h4>100% construida</h4>
-    <p>Ambientes terminados y listos para habitar sin obra adicional.</p>
-  </div>
-  <div class="feature-card">
-    <div class="feature-dot"></div>
-    <h4>Entorno country</h4>
-    <p>Barrio residencial tranquilo con espacios verdes y vida premium.</p>
-  </div>
-  <div class="feature-card">
-    <div class="feature-dot"></div>
-    <h4>Ocupación inmediata</h4>
-    <p>Vivir, alquilar o casa de fin de semana desde el día 1.</p>
-  </div>
-  <div class="feature-card">
-    <div class="feature-dot"></div>
-    <h4>Generá ingresos</h4>
-    <p>Renta temporal o permanente mientras se valoriza tu activo.</p>
-  </div>
-</div>
-```
+        <div class="hero-points">
+          <div class="point">
+            <strong>Sala Inicial</strong>
+            Empezá desde cero con una guía clara para crear y vender tu primer producto digital.
+          </div>
+          <div class="point">
+            <strong>Sala Business</strong>
+            Armá tu sistema de ventas y automatización para empezar a escalar.
+          </div>
+          <div class="point">
+            <strong>Club Premium</strong>
+            Comunidad y acompañamiento para llevar tu marca y tu negocio a nivel global.
+          </div>
+          <div class="point">
+            <strong>Sin humo. Con método.</strong>
+            Un sistema simple, práctico y pensado para convertir conocimiento en ingresos.
+          </div>
+        </div>
+      </div>
 
-  </div>
-</section>
-
-<!-- ==================== LA OPORTUNIDAD ==================== -->
-
-<section class="alt">
-  <div class="container reveal">
-    <div class="section-divider"></div>
-    <p class="section-label">La oportunidad</p>
-    <h2>Lo que otros <em>no ven</em></h2>
-    <p class="lead">El precio actual refleja una situación documental transitoria, no el valor real del inmueble. Esa diferencia es tu margen.</p>
-
-```
-<div class="pricing-block">
-  <div class="pricing-row">
-    <span class="pricing-label">Valor con escritura</span>
-    <span class="pricing-value crossed">100%</span>
-  </div>
-  <div class="pricing-row">
-    <span class="pricing-label">Precio actual</span>
-    <span class="pricing-value">~75%</span>
-  </div>
-  <div class="pricing-row">
-    <span class="pricing-label">Tu ventaja de entrada</span>
-    <span class="pricing-value">25%</span>
-  </div>
-  <div class="pricing-highlight">
-    <p>El descuento ya está aplicado. La valorización es lo que viene.</p>
-  </div>
-</div>
-```
-
-  </div>
-</section>
-
-<!-- ==================== SITUACIÓN LEGAL ==================== -->
-
-<section>
-  <div class="container reveal">
-    <div class="section-divider"></div>
-    <p class="section-label">Transparencia total</p>
-    <h2>La situación legal, <em>sin letra chica</em></h2>
-    <p class="lead">Título imperfecto: aún sin escritura. No es un problema del inmueble — es una situación común en desarrollos en proceso de regularización.</p>
-
-```
-<div class="legal-box">
-  <h3>¿Por qué es segura esta operación?</h3>
-  <div class="legal-item">
-    <span class="legal-check">✓</span>
-    <div>
-      <strong>Posesión real, pública y continua</strong>
-      <span>Más de 10 años de ocupación documentada e ininterrumpida</span>
+      <div class="video-card" id="vsl">
+        <div class="video-box">
+          <!-- REEMPLAZAR ESTE LINK POR TU VSL -->
+          <iframe src="https://www.youtube.com/embed/FxkUGOVHdX8?rel=0" title="Presentación Persaltum" allowfullscreen></iframe>
+        </div>
+        <div class="video-note">
+          Mirá esta presentación y entendé cómo transformar tu experiencia en un negocio digital
+          que funcione incluso cuando vos no estás.
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="legal-item">
-    <span class="legal-check">✓</span>
-    <div>
-      <strong>Inversión acreditable</strong>
-      <span>Construcción y mejoras con respaldo documental</span>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="headline">
+        <span class="tag">Esto es para vos si sabés mucho pero no lo estás monetizando</span>
+        <h2>El problema no es tu conocimiento. El problema es que no tenés un sistema.</h2>
+        <p>
+          Muchas personas tienen experiencia, capacidad y algo valioso para enseñar, pero siguen
+          dependiendo de su tiempo, de clientes sueltos o de ventas improvisadas.
+          Persaltum nace para cambiar eso.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">01</div>
+          <h3>Tenés conocimiento</h3>
+          <p>Ya sabés hacer algo que otras personas necesitan, valoran o quieren aprender.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">02</div>
+          <h3>No tenés estructura</h3>
+          <p>Probaste contenido, ideas, publicaciones o mensajes, pero no lográs estabilidad en ventas.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">03</div>
+          <h3>Necesitás un método</h3>
+          <p>Un sistema simple para crear tu oferta, venderla y automatizar el proceso sin complicarte.</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="legal-item">
-    <span class="legal-check">✓</span>
-    <div>
-      <strong>Sin conflictos posesorios</strong>
-      <span>No existen reclamos ni disputas conocidas</span>
+  </section>
+
+  <section class="section" id="incluye">
+    <div class="container">
+      <div class="headline">
+        <span class="tag">Qué vas a aprender</span>
+        <h2>Persaltum está diseñado para ayudarte a pasar de idea a sistema</h2>
+        <p>
+          No se trata solo de crear un curso. Se trata de construir una estructura que te permita
+          vender, automatizar y escalar.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Vas a aprender a:</h3>
+          <ul class="checklist">
+            <li><strong>Elegir qué vender</strong> y convertir tu experiencia en una oferta clara.</li>
+            <li><strong>Diseñar tu infoproducto</strong> o mentoría de forma simple y vendible.</li>
+            <li><strong>Crear un mensaje poderoso</strong> que conecte con tu cliente ideal.</li>
+            <li><strong>Armar tu landing page</strong> y tu sistema de conversión.</li>
+            <li><strong>Vender por Instagram y WhatsApp</strong> con estrategia.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Y también a:</h3>
+          <ul class="checklist">
+            <li><strong>Automatizar el seguimiento</strong> desde la interacción hasta la compra.</li>
+            <li><strong>Conectar herramientas</strong> para que el sistema funcione solo.</li>
+            <li><strong>Crear contenido que venda</strong> sin depender solo de seguidores.</li>
+            <li><strong>Organizar un embudo real</strong> con productos low, middle y high ticket.</li>
+            <li><strong>Escalar tu negocio digital</strong> con base, claridad y visión a largo plazo.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="legal-item">
-    <span class="legal-check">✓</span>
-    <div>
-      <strong>Marco legal protector</strong>
-      <span>La posesión continua y de buena fe tiene protección jurídica</span>
+  </section>
+
+  <section class="section" id="bonos">
+    <div class="container">
+      <div class="headline">
+        <span class="tag">Bonos y recursos adicionales</span>
+        <h2>No solo accedés al método. Accedés a un sistema completo.</h2>
+        <p>
+          Estos bonos están pensados para que no te quedes en la teoría y puedas implementar de verdad.
+        </p>
+      </div>
+
+      <div class="bonus-wrap">
+        <div class="bonus">
+          <h4>Bono 1 · Curso de ventas por Instagram</h4>
+          <p>
+            Cómo atraer personas, generar interés, convertir seguidores en leads
+            y transformar contenido en oportunidades reales de venta.
+          </p>
+        </div>
+
+        <div class="bonus">
+          <h4>Bono 2 · Sistema de ventas por WhatsApp</h4>
+          <p>
+            Cómo responder, hacer seguimiento, nutrir leads y cerrar ventas
+            con mensajes estratégicos y automatizaciones simples.
+          </p>
+        </div>
+
+        <div class="bonus">
+          <h4>Bono 3 · Landing Page que convierte</h4>
+          <p>
+            Estructura, textos, bloques, CTA y conexión de pagos para que tu página
+            no solo se vea bien, sino que venda.
+          </p>
+        </div>
+
+        <div class="bonus">
+          <h4>Bono 4 · Automatización de tu sistema completo</h4>
+          <p>
+            Qué aplicaciones usar, cómo conectarlas y cómo dejar preparado
+            el flujo desde la interacción con tu contenido hasta la compra.
+          </p>
+        </div>
+
+        <div class="bonus">
+          <h4>Bono 5 · Herramientas recomendadas</h4>
+          <p>
+            Guía práctica con plataformas y recursos para grabar, vender, cobrar,
+            automatizar, organizar y escalar.
+          </p>
+        </div>
+
+        <div class="bonus">
+          <h4>Bono 6 · Entregables y plantillas</h4>
+          <p>
+            Mensajes, estructuras, ideas de ofertas, guiones y recursos
+            listos para adaptar a tu negocio.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-```
+  </section>
 
-  </div>
-</section>
+  <section class="section" id="programas">
+    <div class="container">
+      <div class="headline">
+        <span class="tag">Elegí tu nivel de acceso</span>
+        <h2>Tres puertas de entrada. Un solo objetivo: construir tu negocio digital.</h2>
+        <p>
+          Empezá por donde estés. Desde una base clara, hasta una comunidad premium pensada para escalar.
+        </p>
+      </div>
 
-<!-- ==================== CAMINOS A ESCRITURAR ==================== -->
+      <div class="offers">
+        <div class="offer">
+          <div class="name">Sala Inicial</div>
+          <div class="desc">
+            La entrada ideal para transformar tu conocimiento en un producto digital simple,
+            entendible y listo para empezar a vender.
+          </div>
+          <div class="price">USD 17 <small>pago único</small></div>
+          <div class="old-price">Valor real estimado: USD 79</div>
+          <ul class="features">
+            <li>Método Persaltum base</li>
+            <li>PDF estratégico + clase explicativa</li>
+            <li>Cómo elegir qué vender</li>
+            <li>Cómo estructurar tu primer infoproducto</li>
+            <li>Cómo empezar a vender en redes</li>
+            <li>Acceso inmediato</li>
+          </ul>
+          <!-- REEMPLAZAR LINK -->
+          <a class="btn btn-primary" href="https://tupagolowticket.com" target="_blank">Quiero entrar a Sala Inicial</a>
+        </div>
 
-<section class="alt">
-  <div class="container reveal">
-    <div class="section-divider"></div>
-    <p class="section-label">Hoja de ruta</p>
-    <h2>Tres caminos hacia <em>la escritura</em></h2>
-    <p>La regularización no es abstracta. Existen vías concretas y ya hay base sólida para avanzar.</p>
+        <div class="offer popular">
+          <div class="name">Sala Business</div>
+          <div class="desc">
+            Para quienes ya quieren dejar armado su sistema de ventas, automatización
+            y estructura de crecimiento con más claridad y profundidad.
+          </div>
+          <div class="price">USD 49 <small>o el valor que definas</small></div>
+          <div class="old-price">Valor real estimado: USD 197</div>
+          <ul class="features">
+            <li>Todo lo de Sala Inicial</li>
+            <li>Curso para automatizar ventas en Instagram</li>
+            <li>Curso de ventas y seguimiento en WhatsApp</li>
+            <li>Guía de landing page y conexión de pagos</li>
+            <li>Mapa de herramientas y automatizaciones</li>
+            <li>Plantillas prácticas para implementar</li>
+          </ul>
+          <!-- REEMPLAZAR LINK -->
+          <a class="btn btn-primary" href="https://tupagobusiness.com" target="_blank">Quiero entrar a Sala Business</a>
+        </div>
 
-```
-<div class="paths-grid">
-  <div class="path-card">
-    <div class="path-number">1</div>
-    <h4>Usucapión</h4>
-    <p>Prescripción adquisitiva. Buena fe: 10 años. Ya hay base sólida para avanzar.</p>
-  </div>
-  <div class="path-card">
-    <div class="path-number">2</div>
-    <h4>Escrituración judicial</h4>
-    <p>Vía reconstrucción de antecedentes registrales del desarrollo.</p>
-  </div>
-  <div class="path-card">
-    <div class="path-number">3</div>
-    <h4>Regularización</h4>
-    <p>Altamente probable que el desarrollo se regularice con el tiempo.</p>
-  </div>
-</div>
-```
+        <div class="offer" id="club-premium">
+          <div class="name">Club Premium</div>
+          <div class="desc">
+            La comunidad high ticket para construir, lanzar y escalar tu marca personal
+            y tu negocio digital con visión global, acompañamiento y estrategia.
+          </div>
+          <div class="price">Aplicación <small>ingreso selectivo</small></div>
+          <div class="old-price">Programa premium de acompañamiento</div>
+          <ul class="features">
+            <li>Acceso completo al ecosistema Persaltum</li>
+            <li>Comunidad privada de alto nivel</li>
+            <li>Mentorías y acompañamiento estratégico</li>
+            <li>Revisión de oferta, sistema y posicionamiento</li>
+            <li>Ruta para escalar a nivel global</li>
+            <li>Soporte, visión y crecimiento</li>
+          </ul>
+          <!-- REEMPLAZAR LINK -->
+          <a class="btn btn-primary" href="https://tusformularioclubpremium.com" target="_blank">Aplicar a Club Premium</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <section class="section">
+    <div class="container">
+      <div class="headline">
+        <span class="tag">Qué diferencia a Persaltum</span>
+        <h2>No vendemos solo contenido. Te ayudamos a construir estructura.</h2>
+        <p>
+          La mayoría crea productos sin validación, sin sistema y sin automatización.
+          Persaltum está pensado para que avances con claridad, foco y una lógica comercial real.
+        </p>
+      </div>
 
-<!-- ==================== PERFIL ==================== -->
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">A</div>
+          <h3>Simple</h3>
+          <p>No complicamos el proceso. Lo volvemos entendible y accionable.</p>
+        </div>
+        <div class="card">
+          <div class="icon">B</div>
+          <h3>Práctico</h3>
+          <p>Te mostramos qué hacer, en qué orden y con qué herramientas.</p>
+        </div>
+        <div class="card">
+          <div class="icon">C</div>
+          <h3>Escalable</h3>
+          <p>Desde un primer producto hasta una comunidad premium con visión global.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <div class="container reveal">
-    <div class="section-divider"></div>
-    <p class="section-label">Perfil de comprador</p>
-    <h2>¿Es para vos?</h2>
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h3>Esto es para vos si:</h3>
+        <ul class="checklist">
+          <li><strong>Sabés mucho</strong> pero todavía no lo convertiste en ventas reales.</li>
+          <li><strong>Querés dejar de improvisar</strong> y construir algo claro.</li>
+          <li><strong>Querés un sistema</strong> para vender por redes, WhatsApp y landing page.</li>
+          <li><strong>Querés escalar</strong> sin depender solo de tu tiempo.</li>
+        </ul>
+      </div>
 
-```
-<div class="profile-grid">
-  <div class="profile-box profile-yes">
-    <h4>Sí, si buscás</h4>
-    <ul>
-      <li>Vivir ya, sin esperar</li>
-      <li>Comprar debajo del mercado</li>
-      <li>Inversión a mediano plazo</li>
-      <li>Entender la oportunidad posesoria</li>
-    </ul>
-  </div>
-  <div class="profile-box profile-no">
-    <h4>No, si necesitás</h4>
-    <ul>
-      <li>Escritura inmediata al cierre</li>
-      <li>Operación bancaria tradicional</li>
-      <li>Cero tolerancia documental</li>
-    </ul>
-  </div>
-</div>
+      <div class="card">
+        <h3>Esto no es para vos si:</h3>
+        <ul class="checklist">
+          <li><strong>Buscás magia</strong> sin aplicar ni ejecutar.</li>
+          <li><strong>Querés solo teoría</strong> sin implementación.</li>
+          <li><strong>No querés vender</strong> y preferís seguir improvisando.</li>
+          <li><strong>No estás dispuesto</strong> a tomar acción real.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<blockquote>El que compra acá no compra con miedo. Compra con visión.</blockquote>
-```
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Tu sistema no empieza cuando todo esté perfecto. Empieza cuando decidís empezar.</h2>
+        <p>
+          Podés seguir guardando ideas o podés convertir lo que sabés en un negocio digital
+          real, con productos, automatización y una escalera de valor pensada para crecer.
+        </p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="https://tupagolowticket.com" target="_blank">Entrar a Sala Inicial</a>
+          <a class="btn btn-secondary" href="https://tusformularioclubpremium.com" target="_blank">Aplicar a Club Premium</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="headline">
+        <span class="tag">Preguntas frecuentes</span>
+        <h2>Respuestas claras para que avances con seguridad</h2>
+      </div>
 
-<!-- ==================== CTA CON WHATSAPP ==================== -->
+      <div class="faq">
+        <details>
+          <summary>¿Necesito tener muchos seguidores para vender?</summary>
+          <p>No. Necesitás una oferta clara, un mensaje correcto y un sistema simple de conversión.</p>
+        </details>
 
-<section class="cta-section">
-  <div class="container reveal">
-    <h2>Algunas oportunidades <em>no esperan</em></h2>
-    <p>Coordiná una visita. Cuando la veas en persona, vas a entender por qué no va a estar disponible mucho más tiempo.</p>
+        <details>
+          <summary>¿Esto sirve si todavía no tengo un curso creado?</summary>
+          <p>Sí. De hecho, está pensado para ayudarte a definir qué vender, cómo estructurarlo y cómo lanzarlo.</p>
+        </details>
 
-```
-<div class="cta-buttons">
-  <!-- ============================================================
-       📱 MODIFICAR NÚMERO DE WHATSAPP ACÁ
-       Reemplazá 5491112345678 por tu número con código de país
-       sin espacios, guiones ni signos.
-       Ejemplo Argentina: 5491165432100
-       El texto después de "text=" es el mensaje automático.
-       ============================================================ -->
-  <a href="https://wa.me/5491112345678?text=Hola%2C%20me%20interesa%20la%20propiedad%20en%20Altos%20de%20Manzanares"
-     class="cta-whatsapp" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Escribime por WhatsApp
-  </a>
-</div>
+        <details>
+          <summary>¿Qué diferencia hay entre Sala Inicial, Sala Business y Club Premium?</summary>
+          <p>
+            Sala Inicial es la base para empezar. Sala Business agrega implementación práctica y automatización.
+            Club Premium es la experiencia de acompañamiento y escalado con visión global.
+          </p>
+        </details>
 
-<p class="cta-note">Consulta sin compromiso · Toda la documentación disponible para revisión</p>
-```
+        <details>
+          <summary>¿Voy a aprender a automatizar Instagram, WhatsApp y landing?</summary>
+          <p>Sí. Ese es uno de los focos principales de Sala Business y también forma parte del ecosistema completo.</p>
+        </details>
 
-  </div>
-</section>
+        <details>
+          <summary>¿Club Premium es para cualquiera?</summary>
+          <p>No. Es una comunidad premium pensada para personas comprometidas con construir y escalar su negocio digital.</p>
+        </details>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+        <details>
+          <summary>¿Cómo recibo el acceso?</summary>
+          <p>Una vez realizada la compra o completada la aplicación, recibís el acceso según el producto elegido.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+      <div>
+        <strong>Persaltum</strong><br />
+        Universidad Digital del Infoproducto
+      </div>
+      <div>
+        Instagram: @pablo.mgalli<br />
+        WhatsApp: +54 9 XX XXXX XXXX
+      </div>
+      <div>
+        © 2026 Persaltum. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
